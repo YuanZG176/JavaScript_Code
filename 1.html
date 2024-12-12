@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面1</title>
+</head>
+
+<body>
+  <input type="file" id="uploadInput" accept="image/*">
+  <div id="imagePreview"></div>
+
+  <script>
+    document.getElementById('uploadInput').addEventListener('change', function (event) {
+      var file = event.target.files[0]; // 获取上传的文件
+      var reader = new FileReader(); // 创建文件读取器
+      reader.onload = function (event) {
+        var imageUrl = event.target.result; // 获取图片的URL
+        localStorage.setItem('imageData', imageUrl); // 将图片数据保存到本地存储
+        window.location.href = '2.html'; // 跳转到第二个页面
+      };
+      reader.readAsDataURL(file); // 读取文件数据
+    });
+  </script>
+</body>
+
+</html>
